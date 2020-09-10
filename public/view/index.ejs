@@ -5,10 +5,45 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
 </head>
 
-<body>
-  12345
+<body style="padding:16px;">
+  <h1 style="margin-bottom:16px;">员工管理系统</h1>
+  <div style="margin-bottom:16px;">
+    <button type="button" class="btn btn-primary" id="add">添加</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">序号</th>
+        <th scope="col">姓名</th>
+        <th scope="col">性别</th>
+        <th scope="col">年龄</th>
+        <th scope="col">爱好</th>
+        <!-- <th scope="col">图片</th> -->
+        <th scope="col">编辑</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% for(var i = 0; i < list.length; i++) {%>
+      <tr>
+        <th scope="row"><%-list[i].Mno %></th>
+        <td><%-list[i].Mname %></td>
+        <td><%-list[i].Msex %></td>
+        <td><%-list[i].Mage %></td>
+        <td><%-list[i].Mhobby %></td>
+        <!-- <td><img style="width:50px;height:50px;" src={{$value.Mimg}} /></td> -->
+        <td>
+          <a href='/getOne?id=<%=list[i].Mno %>'>查看</a>
+          <a href='/editOne?id=<%=list[i].Mno %>'>修改</a>
+          <a href='/deleteOne?id=<%=list[i].Mno %>'>删除</a>
+        </td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
 </body>
 
 </html>
