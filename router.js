@@ -1,13 +1,15 @@
 const Router = require('@koa/router')
 const {
   getIndex,
-  editDetail
+  getEditDetail,
+  getOne
 } = require('./service')
 
 const router = new Router()
 
 router
   .get('/index', getIndex)
-  .get('/editOne', editDetail)
+  .get('/editOne', getEditDetail)
+  .get('/getOne', getOne)
 
 module.exports = router
