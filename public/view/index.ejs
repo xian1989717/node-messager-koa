@@ -4,14 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>首页</title>
   <link rel="stylesheet" href="./css/bootstrap.css">
+  <style>
+    #add {
+      text-decoration: none;
+      color: white;
+    }
+  </style>
 </head>
 
 <body style="padding:16px;">
   <h1 style="margin-bottom:16px;">员工管理系统</h1>
   <div style="margin-bottom:16px;">
-    <button type="button" class="btn btn-primary" id="add">添加</button>
+    <button type="button" class="btn btn-primary">
+      <a id="add" href="/add">添加</a>
+    </button>
   </div>
   <table class="table">
     <thead>

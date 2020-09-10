@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+</head>
+
+<body style="margin:16px;">
+  <h1>编辑详情</h1>
+  <form action="editDetail?id={{data[0].Mno}}" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="name">姓名</label>
+      <input type="text" class="form-control" id="name" name="Mname" value="{{data[0].Mname}}">
+    </div>
+    <div class="form-group">
+      <label for="gender">性别</label>
+      <select class="form-control" id="gender" name="Msex" selected="{{data[0].Msex}}">
+        <option>男</option>
+        <option>女</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="age">年龄</label>
+      <input type="number" class="form-control" id="age" name="Mage" value="{{data[0].Mage}}" />
+    </div>
+    <div class="form-group">
+      <label for="hobby">爱好</label>
+      <input type="textarea" class="form-control" id="hobby" name="Mhobby" value="{{data[0].Mhobby}}" />
+    </div>
+    <div class="form-group">
+      <label for="img">图片</label>
+      <input type="file" class="form-control-file" name="img" id="img">
+    </div>
+    <button type="submit" class="btn btn-primary">
+      提交
+    </button>
+  </form>
+</body>
+
+</html>

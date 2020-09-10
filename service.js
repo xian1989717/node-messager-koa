@@ -15,5 +15,23 @@ module.exports = {
     `
     const res = await query(sql)
     await ctx.render('index', { list: res })
+  },
+  async editDetail (ctx) {
+    const sql = `
+      select
+        Mno,
+        Mname,
+        Msex,
+        Mage,
+        Mhobby,
+        Mimg
+      from
+        node_messager
+      where
+        Mno = ${ctx.query.id}
+      and is_removed = 0
+    `
+    const res = await query(sql)
+    await ctx.render('edit', res)
   }
 }
