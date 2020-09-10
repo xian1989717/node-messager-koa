@@ -21,7 +21,7 @@
         <th scope="col">性别</th>
         <th scope="col">年龄</th>
         <th scope="col">爱好</th>
-        <!-- <th scope="col">图片</th> -->
+        <th scope="col">图片</th>
         <th scope="col">编辑</th>
       </tr>
     </thead>
@@ -34,7 +34,7 @@
         <td><%-list[i].Msex %></td>
         <td><%-list[i].Mage %></td>
         <td><%-list[i].Mhobby %></td>
-        <!-- <td><img style="width:50px;height:50px;" src={{$value.Mimg}} /></td> -->
+        <td><img style="width:50px;height:50px;" src='<%=list[i].Mimg %>' /></td>
         <td>
           <a href='/getOne?id=<%=list[i].Mno %>'>查看</a>
           <a href='/editOne?id=<%=list[i].Mno %>'>修改</a>

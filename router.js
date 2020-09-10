@@ -6,6 +6,6 @@ const {
 const router = new Router()
 
 router
-  .get('/', getIndex)
+  .get('/index', getIndex)
 
 module.exports = router
