@@ -4,7 +4,9 @@ const {
   getEditDetail,
   getOne,
   deleteOne,
-  editDetail
+  editDetail,
+  getAdd,
+  addDetail
 } = require('./service')
 
 const router = new Router()
@@ -14,6 +16,8 @@ router
   .get('/editOne', getEditDetail)
   .get('/getOne', getOne)
   .get('/deleteOne', deleteOne)
+  .get('/add', getAdd)
   .post('/editDetail', editDetail)
+  .post('/addDetail', addDetail)
 
 module.exports = router

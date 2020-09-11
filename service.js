@@ -1,6 +1,7 @@
 const fs = require('fs')
 const formidable = require('formidable')
 const { connection, query } = require('./mysql.config')
+const { resolve } = require('path')
 
 module.exports = {
   async getIndex (ctx) {
@@ -119,5 +120,45 @@ module.exports = {
       ctx.response.type = 'html'
       ctx.response.body = '<script>alert("删除成功！");window.location.href="/index"</script>'
     }
+  },
+  async getAdd (ctx) {
+    await ctx.render('add')
+  },
+  async addDetail (ctx) {
+    const form = new formidable.IncomingForm()
+    form.uploadDir = 'public/imgs/'
+    await new Promise((resolve, reject) => {
+      form.parse(ctx.req, async (err, fields, files) => {
+        if (err) {
+          reject(err)
+          return
+        }
+        const { Mname, Msex, Mage, Mhobby } = fields
+        const { name, path } = files.img
+
+        if (!Mname || !Msex || !Mage || !Mhobby || !name) {
+          ctx.body = '必填项，未填写，请填写必填项！'
+          return
+        }
+        fs.renameSync(path, './public/imgs/' + name)
+        const sql = `
+          insert into
+            node_messager
+          set
+            Mname = '${Mname}',
+            Msex = '${Msex}',
+            Mage = '${Mage}',
+            Mhobby = '${Mhobby}',
+            Mimg = 'imgs/${name}',
+            is_removed = 0
+        `
+        const res = await query(sql)
+        if (res) {
+          ctx.response.type = 'html'
+          ctx.response.body = '<script>alert("新增成功！");window.location.href="/index"</script>'
+          resolve()
+        }
+      })
+    })
   }
 }
